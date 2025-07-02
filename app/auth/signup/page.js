@@ -1,14 +1,38 @@
-import React from 'react'
+"use client"; 
 import Link from 'next/link'
+import React from 'react'
+import { signIn } from 'next-auth/react';
+import { FaGithub } from "react-icons/fa";
 
 const signup = () => {
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Sign Up</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Sign up</h2>
+
+                {/* GitHub Sign Up Button */}
+                <button
+                    onClick={() => signIn('github')}
+                    className="w-full flex items-center justify-center gap-2 bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700 cursor-pointer transition duration-200 mb-4"
+                >
+                    <FaGithub />
+                    Sign-up with GitHub
+                </button>
+
+                <div className="relative mb-4">
+                    <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div className="relative flex justify-center text-sm">
+                        <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                    </div>
+                </div>
+
+
                 <form className="space-y-4">
                     <div>
-                        <label for="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
                         <input
                             type="name"
                             id="name"
@@ -17,9 +41,9 @@ const signup = () => {
                             required
                         />
                     </div>
-                   
+
                     <div>
-                        <label for="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                         <input
                             type="email"
                             id="email"
@@ -29,9 +53,9 @@ const signup = () => {
                         />
                     </div>
 
-                    
+
                     <div>
-                        <label for="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <input
                             type="password"
                             id="password"
@@ -48,18 +72,18 @@ const signup = () => {
                         </a>
                     </div>
 
-                    
+
                     <button
                         type="submit"
                         className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 cursor-pointer transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
-                        Sign in
+                        Sign up
                     </button>
 
-                
+
                     <p className="text-sm text-gray-600 text-center mt-4">
-                        Don't have an account? 
-                        <Link className='hover:underline text-indigo-600' href="/user/signup"> Sign up</Link>
+                        Don't have an account?
+                        <Link className='hover:underline text-indigo-600' href="/auth/login">Login</Link>
                     </p>
                 </form>
             </div>
