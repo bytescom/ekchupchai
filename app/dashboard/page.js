@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import ContactForm from '@/components/ContactForm';
+
 
 const Dashboard = () => {
   const { data: session, status } = useSession();
@@ -20,7 +22,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Hello, {session?.user?.name || 'User'}</h1>
+      <ContactForm/>
     </div>
   );
 };
